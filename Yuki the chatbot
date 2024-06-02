@@ -1,36 +1,94 @@
-// Import the Botpress WebChat JavaScript file
-<script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Botpress in a div</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
  
-// Initialize the Botpress WebChat with the required parameters
-<script>
-    window.botpressWebChat.init({
-        // Replace <your-bot-id> and <your-client-id> with your actual bot and client IDs
-        "botId": "c107da97-82a9-4fe2-8ca2-bf244410db7b",
-        "clientId": "c107da97-82a9-4fe2-8ca2-bf244410db7b",
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+        background-color: #000000;
+        font-family: Arial, sans-serif;
+      }
  
-        // Set the URL for the Botpress WebChat JavaScript file and the messaging server
-        "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
-        "messagingUrl": "https://messaging.botpress.cloud",
+      .center-div {
+        width: 50vw;
+        height: 80vh;
+        background-color: rgb(102, 71, 255);
+        border-radius: 15px;
+        padding: 5px;
+        box-sizing: border-box;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
  
-        // Set the name of the bot that will be displayed in the WebChat interface
-        "botName": "Yuki",
+      @media only screen and (max-width: 600px) {
+        .center-div {
+          height: 40vh;
+          width: 80vw;
+          background-color: rgb(102, 71, 255);
+          border-radius: 15px;
+          padding: 5px;
+          box-sizing: border-box;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
  
-        // Set the width of the WebChat container and layout to 100% (Full Screen)
-        "containerWidth": "100%25",
-        "layoutWidth": "100%25",
- 
-        // Hide the widget and disable animations
-        "hideWidget": true,
-        "disableAnimations": true,
-    });
- 
-    // Opens up the Chatbot by default
-    // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
-    window.botpressWebChat.onEvent(
-        function () {
-            window.botpressWebChat.sendEvent({ type: "show" });
-        },
-        ["LIFECYCLE.LOADED"]
-    );
-</script>
- 
+  <body>
+    <div>
+      <p style="text-align: center;">Botpress Chatbot in a <span><</span><span>div></span></p>
+      <div class="absolute inset-4 ">
+        <div
+          class="center-div relative h-full w-full overflow-clip rounded-md border border-zinc-200 bg-white p-2 px-0 py-0"
+        >
+          <iframe
+            style="border: none;"
+            srcdoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
+            <script>
+              window.botpressWebChat.init({
+                  'composerPlaceholder': 'Say something !',
+                  'botConversationDescription': 'Yuki the chatbot',
+                  'botName': 'Yuki',
+                  'botId': 'c107da97-82a9-4fe2-8ca2-bf244410db7b',
+                  'hostUrl': 'https://cdn.botpress.cloud/webchat/v0',
+                  'messagingUrl': 'https://messaging.botpress.cloud',
+                  'clientId': 'c107da97-82a9-4fe2-8ca2-bf244410db7b',
+                  'enableConversationDeletion': true,
+                  'showPoweredBy': true,
+                  'className': 'webchatIframe',
+                  'containerWidth': '100%25',
+                  'layoutWidth': '100%25',
+                  'hideWidget': true,
+                  'showCloseButton': false,
+                  'disableAnimations': true,
+                  'closeOnEscape': false,
+                  'showConversationsButton': false,
+                  'enableTranscriptDownload': false,
+                  'stylesheet':'https://webchat-styler-css.botpress.app/prod/code/3fcd3e4e-d5bc-4bf5-8699-14b621b3ada2/v31782/style.css'
+                  
+              });
+            window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
+            </script></body>"
+            width="100%"
+            height="100%"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
